@@ -19,6 +19,7 @@ class Command(BaseCommand):
             order.product.add(product)
             order.amount += product.price
             order.save()
+        
             
         
             
