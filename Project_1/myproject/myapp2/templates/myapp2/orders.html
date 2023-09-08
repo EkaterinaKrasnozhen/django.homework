@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о заказе</title>
+</head>
+<body>
+    <h3>{{ order.pk }}</h3>
+    {% for product in products %}
+    <li>{{ product.name }}:{{ product.price }}</li> 
+    {% endfor %}
+    <p>total:{{ order.amount }}</p>
+</body>
+</html>

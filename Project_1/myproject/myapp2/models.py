@@ -41,3 +41,5 @@ class Order(models.Model):
         return f'Order_id: {self.pk}, Client_id: {self.client.pk}, {self.product}'
     
         
+    
+        

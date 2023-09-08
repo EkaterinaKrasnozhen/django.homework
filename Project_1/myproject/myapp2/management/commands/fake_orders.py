@@ -10,18 +10,16 @@ class Command(BaseCommand):
     
     def handle(self, *args, **kwargs):
         count = kwargs.get('count')
-        clients = Client.objects.filter(pk=count)
-        # for i in range(1, count + 1):
-        #     products = Product(name=f'product{i}', title=f'very good product', price=1342.5 + i, count=i + 10)
-        #     products.save()
-        
+        clients = Client.objects.filter(pk=count)        
         for client in clients:
-            order = Order(client=client, amount=664000)
+            order = Order(client=client, amount=0)
             order.save()
-        products = Product.objects.filter(pk=count)
+        products = Product.objects.all().order_by('pk')[:count]
         for product in products:
             order.product.add(product)
+            order.amount += product.price
             order.save()
+            
         
             
                 

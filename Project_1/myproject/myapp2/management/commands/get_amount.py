@@ -10,5 +10,10 @@ class Command(BaseCommand):
     
     def handle(self, *args, **kwargs):
         pk = kwargs['pk']
+        amount=0
         order = Order.objects.filter(pk=pk).first()
-        self.stdout.write(f'{order.product.all()}')
+        products_in_order = order.product.all()
+        for product in products_in_order:
+            amount += product.price
+        return f'{amount}'
+        
