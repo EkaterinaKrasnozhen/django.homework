@@ -4,8 +4,10 @@ from myapp2.models import Order
 from myapp2.models import Client
 from datetime import datetime, timedelta
 
+
 def about(request):
     return HttpResponse('Hello')
+
 
 def client_orders(request, client_id, date_filter):
     now = datetime.now()   
@@ -13,6 +15,7 @@ def client_orders(request, client_id, date_filter):
     client = get_object_or_404(Client, pk=client_id)
     client_orders = Order.objects.filter(client=client).filter(date__gte=filter_date)
     return render(request, 'myapp2/clients_orders.html', {'client': client, 'orders': client_orders})
+
 
 def orders(request, order_id):
     order = Order.objects.filter(pk=order_id).first()
