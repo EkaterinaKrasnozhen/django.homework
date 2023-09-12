@@ -20,6 +20,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     count = models.IntegerField()
     add_date = models.DateField(auto_now_add=True)
+    image = models.ImageField(upload_to='products/', blank=True)
     
     def __str__(self):
         return f'{self.name}, {self.price}, {self.get_title()}'
@@ -30,6 +31,7 @@ class Product(models.Model):
     def get_title(self):
         words = self.title.split()
         return f'{" ".join(words[:2])}...'
+
     
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE)
