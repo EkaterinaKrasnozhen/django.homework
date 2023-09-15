@@ -20,7 +20,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     count = models.IntegerField()
     add_date = models.DateField(auto_now_add=True)
-    image = models.ImageField(upload_to='products/', blank=True)
+    image = models.ImageField(upload_to='products/', blank=True) # default=None
     rating = models.DecimalField(default=5.0, max_digits=3, decimal_places=2)
     
     def __str__(self):
